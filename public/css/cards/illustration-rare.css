@@ -127,8 +127,8 @@
       hsl(0, 0%, 0%) 120% 
     );
 
-  opacity: calc(var(--card-opacity) * var(--pointer-from-center));
+  opacity: calc( var(--card-opacity) * var(--pointer-from-center) );
   mix-blend-mode: screen;
-  filter: brightness(.55) contrast(2);
+  filter: brightness(.475) contrast(2);
 
 }
