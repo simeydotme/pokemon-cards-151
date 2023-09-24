@@ -1,0 +1,223 @@
+/*
+
+  POKEBALL HOLO
+
+*/
+
+
+
+
+
+
+
+/*
+
+  SHINE LAYERS
+
+*/
+.card {
+  --foil-brightness: 0.55;
+}
+
+.card[data-rarity$="pokeball holo"] {
+  
+  --pokeball: url(/img/151/pokeball-outer.webp);
+  --pokeball-inner: url(/img/151/pokeball-inner.webp);
+  --viewport-clip: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10%, 7% 10%, 7% 48%, 92% 48%, 92% 10%, 0 10%);
+  --edge-clip: polygon(94.8% 2.8%, 95.7% 3.2%, 96.2% 3.8%, 96.2% 96%, 95.9% 96.8%, 94.8% 97.3%, 5% 97.3%, 4.2% 96.9%, 3.8% 96.2%, 3.8% 6.1%, 15% 6.1%, 16% 5%, 17.9% 4%, 19% 2.8%);
+
+}
+
+
+.card[data-rarity$="pokeball holo"] .card__shine {
+
+  clip-path: var(--viewport-clip);
+
+  background: linear-gradient(45deg,#fff 15%,#ddd,#ddd, #fff 85%);
+  background-position: var(--pointer-x) var(--pointer-y);
+  background-size: 200%;
+
+  mix-blend-mode: hard-light;
+  mask: none;
+
+}
+
+.card[data-rarity$="pokeball holo"] .card__shine:after {
+
+  content: "";
+  --mask: var(--pokeball);
+
+  clip-path: var(--edge-clip);
+  
+  background-image:
+    var(--mask),
+    linear-gradient( 45deg, 
+      var(--sunpillar-4), 
+      var(--sunpillar-5), 
+      var(--sunpillar-6), 
+      var(--sunpillar-1), 
+      var(--sunpillar-2), 
+      var(--sunpillar-3), 
+      var(--sunpillar-4), 
+      var(--sunpillar-5), 
+      var(--sunpillar-6),
+      var(--sunpillar-1), 
+      var(--sunpillar-2), 
+      var(--sunpillar-3),  
+      var(--sunpillar-4)
+    );
+
+  background-size: 40% auto, 200% 200%;
+  background-position: center center, var(--pointer-x) var(--pointer-y);
+  background-blend-mode: screen;
+  
+  filter: brightness(1) contrast(1.5) saturate(calc(var(--pointer-from-center) * 1.6));
+  mix-blend-mode: overlay;
+
+  opacity: var(--card-opacity);
+
+  mask-image: 
+    var(--mask), 
+    radial-gradient( 
+      farthest-corner at var(--pointer-x) var(--pointer-y),
+      white 20%, transparent 80%
+    );
+
+  mask-size: 40% auto, cover;
+  mask-mode: alpha;
+  mask-composite: subtract;
+  
+  
+}
+
+.card[data-rarity$="pokeball holo"] .card__shine:before {
+
+  content: "";
+  --mask: var(--pokeball-inner);
+
+  clip-path: var(--edge-clip);
+  
+  background-image:
+    var(--mask),
+    linear-gradient( 125deg, 
+      var(--sunpillar-4), 
+      var(--sunpillar-5), 
+      var(--sunpillar-6), 
+      var(--sunpillar-1), 
+      var(--sunpillar-2), 
+      var(--sunpillar-3), 
+      var(--sunpillar-4), 
+      var(--sunpillar-5), 
+      var(--sunpillar-6),
+      var(--sunpillar-1), 
+      var(--sunpillar-2), 
+      var(--sunpillar-3),  
+      var(--sunpillar-4)
+    ),
+    var(--glitter);
+
+  background-size: 40% auto, 170% 170%, 300px 300px;
+  background-position: center center, var(--pointer-y) var(--pointer-x), center center;
+  background-blend-mode: screen, difference;
+  
+  filter: brightness(1) contrast(1.5) saturate(calc(var(--pointer-from-center) * 1.6));
+  mix-blend-mode: overlay;
+
+  opacity: var(--card-opacity);
+
+  mask-image: 
+    var(--mask), 
+    radial-gradient( 
+      farthest-corner at var(--pointer-x) var(--pointer-y),
+      white 20%, transparent 80%
+    );
+
+  mask-size: 40% auto, cover;
+  mask-mode: alpha;
+  mask-composite: subtract;
+  
+  
+}
+
+.card.lightning   { --foil-brightness: 0.7; }
+.card.darkness    { --foil-brightness: 0.8; }
+.card.metal       { --foil-brightness: 0.6; }
+
+
+
+
+
+
+
+
+
+/*
+
+  GLARE LAYERS
+
+*/
+	
+.card[data-rarity$="pokeball holo"] .card__glare {
+
+  opacity: var(--card-opacity);
+  clip-path: var(--edge-clip);
+  
+  background-image: 
+    radial-gradient(
+      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+      hsla(0, 0%, 100%, 1) 10%,
+      hsla(207, 33%, 20%, 0.75) 90%
+    );
+
+  mix-blend-mode: overlay;
+  filter: brightness(.8) contrast(1.25);
+  z-index: 5;
+
+}
+
+/* .card[data-rarity$="pokeball holo"] .card__glare:after {
+
+  content: "";
+  opacity: var(--card-opacity);
+  
+  background-image: 
+    radial-gradient( 
+      farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+      hsl(0, 0%, 100%) 10%, 
+      hsla(0, 0%, 100%, 0.5) 20%, 
+      hsla(0, 0%, 0%, 0.5) 120% 
+    );
+
+  filter: brightness(1) contrast(1.5);
+
+} */
+
+
+
+
+
+
+
+
+
+
+/*
+
+  NO MASK
+
+*/
+
+.card:not(.masked)[data-rarity$="pokeball holo"] .card__shine {
+  --foil: none;
+  clip-path: var(--clip-invert);
+}
+
+.card:not(.masked)[data-rarity$="pokeball holo"][data-subtypes^="stage"] .card__glare:after {
+  clip-path: var(--clip-stage-invert);
+}
+
+.card:not(.masked)[data-rarity$="pokeball holo"][data-supertype="trainer"] .card__glare:after {
+  clip-path: var(--clip-trainer-invert);
+}
+
+

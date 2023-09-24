@@ -52,7 +52,8 @@
   // const isPromo = isDefined(set) && set === "swshp";
   
   if ( isReverse ) {
-    rarity = rarity + " Reverse Holo";
+    // rarity = rarity + " Reverse Holo";
+    rarity = rarity + " Pokeball Holo";
   }
 
   if ( rarity === "Rare" ) {

@@ -7,7 +7,7 @@
 
 	let test;
 
-	let query = "pikachu";
+	let query = "chansey";
 	let isLoading = true;
 
 	const getCards = async () => {
