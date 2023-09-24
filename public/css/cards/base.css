@@ -38,6 +38,9 @@
   --sunpillar-clr-5: var(--sunpillar-5);
   --sunpillar-clr-6: var(--sunpillar-6);
 
+  --sunpillar: var(--sunpillar-1) 25%, var(--sunpillar-2), var(--sunpillar-3), var(--sunpillar-4), var(--sunpillar-5), var(--sunpillar-6) 75%;
+  --holo: var(--sunpillar-1), var(--sunpillar-2), var(--sunpillar-3), var(--sunpillar-4), var(--sunpillar-5), var(--sunpillar-6);
+
 }
 
 .card {
@@ -67,6 +70,7 @@
 .card:not( .interactive ) .card__translater,
 .card:not( .interactive ) .card__rotator,
 .card:not( .interactive ) .card__shine,
+.card:not( .interactive ) .card__glitter,
 .card:not( .interactive ) .card__glare {
 
   /* if this card is not in a framework, we can add simply
@@ -236,7 +240,8 @@ Shine & Glare Effects
 
 **/
 
-.card__shine {
+.card__shine,
+.card__glitter {
 
   display: grid;
   transform: translateZ(1px);
@@ -247,11 +252,16 @@ Shine & Glare Effects
   background-size: cover;
   background-position: center;
 
-  filter: brightness(.85) contrast(2.75) saturate(.65);
+  border-radius: var(--card-radius);
+  filter: brightness(.45) contrast(1.5) saturate(1.2);
   mix-blend-mode: color-dodge;
 
   opacity: var(--card-opacity);
 
+}
+
+.card__glitter {
+  z-index: 2;
 }
 
 .card__shine:before,
@@ -317,29 +327,33 @@ Shine & Glare Effects
 .card.masked .card__shine:after {
 
   /** masking image for cards which are masked **/
+
   -webkit-mask-image: var(--mask);
   mask-image: var(--mask);
 	-webkit-mask-size: cover;
   mask-size: cover;
   -webkit-mask-position: center center;
   mask-position: center center;
+  
+  -webkit-mask-mode: luminance;
+  mask-mode: luminance;
 
 }
 
-.card[data-rarity="rare holo"] .card__glare:after,
-.card[data-rarity="rare holo cosmos"] .card__glare:after,
-.card[data-rarity$="reverse holo"] .card__glare:after {
+.card[data-rarity="rare holo"]:not(.masked) .card__glare:after,
+.card[data-rarity="rare holo cosmos"]:not(.masked) .card__glare:after,
+.card[data-rarity$="reverse holo"]:not(.masked) .card__glare:after {
   clip-path: var(--clip);
 }
 
-.card[data-rarity="rare holo"][data-subtypes^="stage"] .card__glare:after,
-.card[data-rarity="rare holo cosmos"][data-subtypes^="stage"] .card__glare:after,
-.card[data-rarity$="reverse holo"][data-subtypes^="stage"] .card__glare:after {
+.card[data-rarity="rare holo"][data-subtypes^="stage"]:not(.masked) .card__glare:after,
+.card[data-rarity="rare holo cosmos"][data-subtypes^="stage"]:not(.masked) .card__glare:after,
+.card[data-rarity$="reverse holo"][data-subtypes^="stage"]:not(.masked) .card__glare:after {
   clip-path: var(--clip-stage);
 }
 
-.card[data-rarity="rare holo"][data-supertype="trainer"] .card__glare:after,
-.card[data-rarity="rare holo cosmos"][data-supertype="trainer"] .card__glare:after,
-.card[data-rarity$="reverse holo"][data-supertype="trainer"] .card__glare:after {
+.card[data-rarity="rare holo"][data-supertype="trainer"]:not(.masked) .card__glare:after,
+.card[data-rarity="rare holo cosmos"][data-supertype="trainer"]:not(.masked) .card__glare:after,
+.card[data-rarity$="reverse holo"][data-supertype="trainer"]:not(.masked) .card__glare:after {
   clip-path: var(--clip-trainer);
 }

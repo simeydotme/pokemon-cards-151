@@ -24,55 +24,69 @@
   export let showcase = false;
 
   const server = import.meta.env.VITE_CDN;
+  let setId = set;
+  // const malieIndex = `https://cdn.malie.io/file/malie-io/tcgl/export/index.json`;
+  // const malieJson = `https://cdn.malie.io/file/malie-io/tcgl/export/v0.1.9.4/sv3-5.en-US.json`;
+  if ( setId === 'svp' ) {
+    setId = 'svbsp';
+  } else {
+    setId = setId.replace( "pt", "-" );
+  }
+
+
   /**
    * Shiny Vault Card (starts with sv)
    */
-  const isShiny = isDefined(number) && number.toLowerCase().startsWith( "sv" );
+  // const isShiny = isDefined(number) && number.toLowerCase().startsWith( "sv" );
   /**
    Trainer / Galar Gallery Card (not shiny)
    */
-  const isGallery = isDefined(number) && !!number.match(/^[tg]g/i);
+  // const isGallery = isDefined(number) && !!number.match(/^[tg]g/i);
   /**
    Alternate Art Card (not shiny / gallery)
    */
-  const isAlternate = isDefined(id) && altArts.includes( id ) && !isShiny && !isGallery;
+  // const isAlternate = isDefined(id) && altArts.includes( id ) && !isShiny && !isGallery;
   /**
    Promo Card
    */
-  const isPromo = isDefined(set) && set === "swshp";
+  // const isPromo = isDefined(set) && set === "swshp";
   
   if ( isReverse ) {
     rarity = rarity + " Reverse Holo";
   }
 
-  if ( isGallery ) {
-    if ( isDefined(rarity) && rarity.startsWith( "Trainer Gallery" ) ) {
-      rarity = rarity.replace( /Trainer Gallery\s*/, "" );
-    }
-    if ( isDefined(rarity) && rarity.includes( "Rare Holo V" ) && isDefined(subtypes) && subtypes.includes("VMAX") ) {
-      rarity = "Rare Holo VMAX";
-    }
-    if ( isDefined(rarity) && rarity.includes( "Rare Holo V" ) && isDefined(subtypes) && subtypes.includes("VSTAR") ) {
-      rarity = "Rare Holo VSTAR";
-    }
+  if ( rarity === "Rare" ) {
+    rarity = "Rare Holo";
   }
 
-  if ( isPromo ) {
-    if ( id === "swshp-SWSH076" || id === "swshp-SWSH077" ) {
-      rarity = "Rare Secret";
+  // if ( isGallery ) {
+  //   if ( isDefined(rarity) && rarity.startsWith( "Trainer Gallery" ) ) {
+  //     rarity = rarity.replace( /Trainer Gallery\s*/, "" );
+  //   }
+  //   if ( isDefined(rarity) && rarity.includes( "Rare Holo V" ) && isDefined(subtypes) && subtypes.includes("VMAX") ) {
+  //     rarity = "Rare Holo VMAX";
+  //   }
+  //   if ( isDefined(rarity) && rarity.includes( "Rare Holo V" ) && isDefined(subtypes) && subtypes.includes("VSTAR") ) {
+  //     rarity = "Rare Holo VSTAR";
+  //   }
+  // }
 
-    } else if ( isDefined(subtypes) && subtypes.includes("V") ) {
-      rarity = "Rare Holo V";
-    } else if ( isDefined(subtypes) && subtypes.includes("V-UNION") ) {
-      rarity = "Rare Holo VUNION";
-    } else if ( isDefined(subtypes) && subtypes.includes("VMAX") ) {
-      rarity = "Rare Holo VMAX";
-    } else if ( isDefined(subtypes) && subtypes.includes("VSTAR") ) {
-      rarity = "Rare Holo VSTAR";
-    } else if ( isDefined(subtypes) && subtypes.includes("Radiant") ) {
-      rarity = "Radiant Rare";
-    }
-  }
+  // if ( isPromo ) {
+  //   if ( id === "swshp-SWSH076" || id === "swshp-SWSH077" ) {
+  //     rarity = "Rare Secret";
+
+  //   } else if ( isDefined(subtypes) && subtypes.includes("V") ) {
+  //     rarity = "Rare Holo V";
+  //   } else if ( isDefined(subtypes) && subtypes.includes("V-UNION") ) {
+  //     rarity = "Rare Holo VUNION";
+  //   } else if ( isDefined(subtypes) && subtypes.includes("VMAX") ) {
+  //     rarity = "Rare Holo VMAX";
+  //   } else if ( isDefined(subtypes) && subtypes.includes("VSTAR") ) {
+  //     rarity = "Rare Holo VSTAR";
+  //   } else if ( isDefined(subtypes) && subtypes.includes("Radiant") ) {
+  //     rarity = "Radiant Rare";
+  //   }
+  // }
 
 
   
@@ -94,134 +108,149 @@
     return "";
   }
   
-  function foilMaskImage ( prop, type = "masks" ) {
+  // function foilMaskImage ( prop, type = "masks" ) {
 
-    let etch = "holo";
-    let style = "reverse";
-    let ext = "webp";
+  //   let etch = "holo";
+  //   let style = "reverse";
+  //   let ext = "webp";
 
-    if ( isDefined( prop ) ) {
-      if ( prop === false ) {
-        return "";
-      }
-      return prop;
-    }
+  //   if ( isDefined( prop ) ) {
+  //     if ( prop === false ) {
+  //       return "";
+  //     }
+  //     return prop;
+  //   }
 
-    if( !isDefined( rarity ) || !isDefined( subtypes ) || !isDefined( supertype ) || !isDefined( set ) || !isDefined( number ) ) {
-      return "";
-    }
+  //   if( !isDefined( rarity ) || !isDefined( subtypes ) || !isDefined( supertype ) || !isDefined( set ) || !isDefined( number ) ) {
+  //     return "";
+  //   }
 
-    const fRarity = rarity.toLowerCase();
-    const fNumber = number.toString().toLowerCase().replace( "swsh", "" ).padStart( 3, "0" );
-    const fSet = set.toString().toLowerCase().replace( /(tg|gg|sv)/, "" );
+  //   const fRarity = rarity.toLowerCase();
+  //   const fNumber = number.toString().toLowerCase().replace( "swsh", "" ).padStart( 3, "0" );
+  //   const fSet = set.toString().toLowerCase().replace( /(tg|gg|sv)/, "" );
 
-    if ( fRarity === "rare holo" ) {
-      style = "swholo";
-    }
+  //   if ( fRarity === "rare holo" ) {
+  //     style = "swholo";
+  //   }
 
-    if ( fRarity === "rare holo cosmos" ) {
-      style = "cosmos";
-    }
+  //   if ( fRarity === "rare holo cosmos" ) {
+  //     style = "cosmos";
+  //   }
 
-    if ( fRarity === "radiant rare" ) {
-      etch = "etched";
-      style = "radiantholo";
-    }
+  //   if ( fRarity === "radiant rare" ) {
+  //     etch = "etched";
+  //     style = "radiantholo";
+  //   }
 
-    if ( fRarity === "rare holo v" || fRarity === "rare holo vunion" || fRarity === "basic v" ) {
-      etch = "holo";
-      style = "sunpillar";
-    }
+  //   if ( fRarity === "rare holo v" || fRarity === "rare holo vunion" || fRarity === "basic v" ) {
+  //     etch = "holo";
+  //     style = "sunpillar";
+  //   }
     
-    if ( fRarity === "rare holo vmax" || fRarity === "rare ultra" || fRarity === "rare holo vstar" ) {
-      etch = "etched";
-      style = "sunpillar";
-    }
+  //   if ( fRarity === "rare holo vmax" || fRarity === "rare ultra" || fRarity === "rare holo vstar" ) {
+  //     etch = "etched";
+  //     style = "sunpillar";
+  //   }
     
-    if ( fRarity === "amazing rare" || fRarity === "rare rainbow" || fRarity === "rare secret" ) {
-      etch = "etched";
-      style = "swsecret";
-    }
+  //   if ( fRarity === "amazing rare" || fRarity === "rare rainbow" || fRarity === "rare secret" ) {
+  //     etch = "etched";
+  //     style = "swsecret";
+  //   }
 
-    if ( isShiny ) {
+  //   if ( isShiny ) {
 
-      etch = "etched";
-      style = "sunpillar";
+  //     etch = "etched";
+  //     style = "sunpillar";
 
-      if ( fRarity === "rare shiny v" || (fRarity === "rare holo v" && fNumber.startsWith( "sv" )) ) {
-        rarity = "Rare Shiny V";
-      }
+  //     if ( fRarity === "rare shiny v" || (fRarity === "rare holo v" && fNumber.startsWith( "sv" )) ) {
+  //       rarity = "Rare Shiny V";
+  //     }
 
-      if ( fRarity === "rare shiny vmax" || (fRarity === "rare holo vmax" && fNumber.startsWith( "sv" )) ) {
-        style = "swsecret";
-        rarity = "Rare Shiny VMAX";
-      }
+  //     if ( fRarity === "rare shiny vmax" || (fRarity === "rare holo vmax" && fNumber.startsWith( "sv" )) ) {
+  //       style = "swsecret";
+  //       rarity = "Rare Shiny VMAX";
+  //     }
 
-    }
+  //   }
 
-    if ( isGallery ) {
+  //   // if ( isGallery ) {
 
-      etch = "holo";
-      style = "rainbow";
+  //   //   etch = "holo";
+  //   //   style = "rainbow";
 
-      if ( fRarity.includes( "rare holo v" ) || fRarity.includes( "rare ultra" ) ) {
+  //   //   if ( fRarity.includes( "rare holo v" ) || fRarity.includes( "rare ultra" ) ) {
 
-        etch = "etched";
-        style = "sunpillar";
+  //   //     etch = "etched";
+  //   //     style = "sunpillar";
 
-      }
+  //   //   }
 
-      if ( fRarity.includes( "rare secret" ) ) {
+  //   //   if ( fRarity.includes( "rare secret" ) ) {
 
-        etch = "etched";
-        style = "swsecret";
+  //   //     etch = "etched";
+  //   //     style = "swsecret";
 
-      }
+  //   //   }
 
-    }
+  //   // }
 
-    if ( isAlternate ) {
+  //   if ( isAlternate ) {
 
-      etch = "etched";
+  //     etch = "etched";
 
-      if ( subtypes.includes( "VMAX" ) ) {
+  //     if ( subtypes.includes( "VMAX" ) ) {
 
-        style = "swsecret";
-        rarity = "Rare Rainbow Alt";
+  //       style = "swsecret";
+  //       rarity = "Rare Rainbow Alt";
 
-      } else {
+  //     } else {
 
-        style = "sunpillar";
+  //       style = "sunpillar";
 
-      }
+  //     }
 
-    }
+  //   }
 
-    if ( isPromo ) {
+  //   if ( isPromo ) {
 
-      let promoStyle = promos[ id ];
-      if ( promoStyle ) {
-        style = promoStyle.style.toLowerCase();
-        etch = promoStyle.etch.toLowerCase();
-        if ( style === "swholo" ) {
-          rarity = "Rare Holo";
-        } else if ( style === "cosmos" ) {
-          rarity = "Rare Holo Cosmos";
-        }
-      }
+  //     let promoStyle = promos[ id ];
+  //     if ( promoStyle ) {
+  //       style = promoStyle.style.toLowerCase();
+  //       etch = promoStyle.etch.toLowerCase();
+  //       if ( style === "swholo" ) {
+  //         rarity = "Rare Holo";
+  //       } else if ( style === "cosmos" ) {
+  //         rarity = "Rare Holo Cosmos";
+  //       }
+  //     }
 
-    }
+  //   }
 
-    return `${ server }/foils/${ fSet }/${ type }/upscaled/${ fNumber }_foil_${ etch }_${ style }_2x.${ ext }`;
+  //   return `${ server }/foils/${ fSet }/${ type }/upscaled/${ fNumber }_foil_${ etch }_${ style }_2x.${ ext }`;
 
-  }
+  // }
+
+  // function foilImage () {
+  //   return foilMaskImage( foil, "foils" );
+  // }
+
+  // function maskImage () {
+  //   return foilMaskImage( mask, "masks" );
+  // }
 
   function foilImage () {
-    return foilMaskImage( foil, "foils" );
+    let suffix = isReverse ? "ph" : "std";
+    // return `https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/${setId}/${setId}_en_${number.padStart( 3, "0" )}_std.png`;
+    return `https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/${setId}/${setId}_en_${number.padStart( 3, "0" )}_${suffix}.foil.png`;
+    // sv3-5/sv3-5_en_025_ph.foil.png
+    // return ``;
   }
 
   function maskImage () {
-    return foilMaskImage( mask, "masks" );
+    let suffix = isReverse ? "ph" : "std";
+    return `https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/${setId}/${setId}_en_${number.padStart( 3, "0" )}_${suffix}.foil.png`;
+    // https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/sv2/sv2_en_004_ph.foil.png
+    // return ``;
   }
 
   const proxy = {

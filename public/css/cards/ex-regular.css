@@ -1,0 +1,191 @@
+/*
+
+  EX REGULAR
+
+*/
+
+.card[data-rarity="double rare"] {
+  --mask: url(https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/sv2/sv2_en_063_std.foil.png);
+}
+
+
+
+
+
+
+/*
+
+  SHINE LAYERS
+
+*/
+
+.card[data-rarity="double rare"] .card__glitter {
+
+  background-image: 
+    radial-gradient( 
+      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+      hsl(295, 100%, 10%) 20%,
+      hsla(183, 84%, 85%, 0.15) 100%
+      ),
+      linear-gradient(
+        var(--angle), 
+        var(--sunpillar)
+      ),
+      var(--birthday-dank),
+      var(--birthday-dank2);
+
+    -webkit-mask-image: 
+      radial-gradient(
+        farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+        transparent 30%, 
+        black 100% 
+      ),
+      var(--mask);
+
+      mask-image: 
+        radial-gradient(
+          farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+          transparent 30%, 
+          black 100% 
+        ),
+        var(--mask);
+
+    -webkit-mask-mode: alpha, luminance;
+    mask-mode: alpha, luminance;
+    -webkit-mask-composite: intersect;
+    mask-composite: intersect;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+
+
+  background-size: cover, 500% 500%, 120% 120%, 120% 120%;
+  background-position: center center, var(--pointer-x) var(--pointer-y), center center, center center;
+  background-blend-mode: darken, hue, color-dodge;
+
+  mix-blend-mode: hard-light;
+  filter: brightness(3) contrast(.75) saturate(.75);
+
+}
+
+.card[data-rarity="double rare"] .card__shine {
+
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+	-webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center center;
+  mask-position: center center;
+
+}
+
+/* .card[data-rarity="double rare"]:not(.masked) .card__shine  {
+
+  filter: brightness(.7) contrast(2) saturate(.5);
+
+} */
+
+.card[data-rarity="double rare"] .card__shine:before,
+.card[data-rarity="double rare"] .card__shine:after {
+
+  content: "";
+
+  --space: 5%;
+  --angle: 133deg;
+  --imgsize: 200px;
+
+  background-image:
+    var(--grain),
+    repeating-linear-gradient( 0deg, 
+      var(--sunpillar-clr-1) calc(var(--space)*1), 
+      var(--sunpillar-clr-2) calc(var(--space)*2), 
+      var(--sunpillar-clr-3) calc(var(--space)*3), 
+      var(--sunpillar-clr-4) calc(var(--space)*4), 
+      var(--sunpillar-clr-5) calc(var(--space)*5), 
+      var(--sunpillar-clr-6) calc(var(--space)*6), 
+      var(--sunpillar-clr-1) calc(var(--space)*7)
+    ),
+    repeating-linear-gradient( 
+      var(--angle), 
+      #0e1221 0%, 
+      hsl(180, 10%, 60%) 2.8%, 
+      hsl(180, 20.9%, 82.2%) 3.5%, 
+      hsl(180, 10%, 60%) 4.2%, 
+      #0e1221 7% , 
+      #0e1221 12% 
+      ),
+    radial-gradient(
+      farthest-corner circle 
+      at var(--pointer-x) var(--pointer-y),
+      hsla(0, 0%, 0%, 0.1) 12%, 
+      hsla(0, 0%, 0%, 0.15) 20%, 
+      hsla(0, 0%, 0%, 0.25) 120%
+    );
+
+  background-blend-mode: screen, hue, hard-light;
+  background-size: var(--imgsize) var(--imgsize), 200% 700%, 300% 100%, 200% 100%;
+  background-position: center, 0% var(--background-y), var(--background-x) var(--background-y), var(--background-x) var(--background-y);
+  
+  filter: brightness(1) contrast(1.5) saturate(2);
+  mix-blend-mode: lighten;
+
+}
+
+.card[data-rarity="double rare"] .card__shine:after {
+
+  content: "";
+
+  background-position: center, 0% var(--background-y), calc( var(--background-x) * -1) calc( var(--background-y) * -1), var(--background-x) var(--background-y);
+  background-size: var(--imgsize) 100%, 200% 400%, 195% 100%, 200% 100%;
+
+  filter: brightness(1.2) contrast(1) saturate(2);
+  mix-blend-mode: difference;
+
+}
+
+
+
+
+
+
+
+
+
+
+/*
+
+  GLARE LAYERS
+
+*/
+
+.card[data-rarity="double rare"] .card__glare,
+.card[data-rarity="double rare"] .card__glare2 {
+
+  background-image: 
+    radial-gradient( 
+      farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+      hsl(0, 0%, 40%) 0%, 
+      hsla(210, 3%, 54%, .5) 63%, 
+      hsla(0, 0%, 30%, 1) 150% 
+    );
+
+  filter: brightness(1.5) contrast(2);
+  mix-blend-mode: color-burn;
+
+  opacity: calc( var(--card-opacity) * ( var(--pointer-from-center) + 0.2 ) );
+  z-index: 4;
+
+}
+
+.card[data-rarity="double rare"] .card__glare2 {
+
+  background-image: 
+    radial-gradient( 
+      farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+        hsl(0, 0%, 90%) 10%, 
+        hsla(0, 0%, 20%, 0) 60% 
+      );
+  filter: brightness(1) contrast(1.4);
+  mix-blend-mode: lighten;
+  opacity: calc( var(--card-opacity) * ( var(--pointer-from-center) ) * .66 );
+
+}

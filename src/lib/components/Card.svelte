@@ -258,6 +258,7 @@
     --card-opacity: ${$springGlare.o};
     --rotate-x: ${$springRotate.x + $springRotateDelta.x}deg;
     --rotate-y: ${$springRotate.y + $springRotateDelta.y}deg;
+    --rotate-delta: ${$springRotateDelta.x}deg;
     --background-x: ${$springBackground.x}%;
     --background-y: ${$springBackground.y}%;
     --card-scale: ${$springScale};
@@ -438,7 +439,9 @@
           height="921"
         />
         <div class="card__shine"></div>
+        <div class="card__glitter"></div>
         <div class="card__glare"></div>
+        <div class="card__glare2"></div>
       </div>
     </button>
   </div>

@@ -1,0 +1,134 @@
+/*
+
+  V REGULAR
+
+*/
+
+
+
+
+
+
+
+/*
+
+  SHINE LAYERS
+
+*/
+
+.card[data-rarity="illustration rare"]:not(.masked) .card__shine {
+
+  filter: brightness(.7) contrast(2) saturate(.5);
+
+}
+
+.card[data-rarity="illustration rare"] .card__shine,
+.card[data-rarity="illustration rare"] .card__shine:after {
+
+  --space: 5%;
+  --angle: 133deg;
+  --imgsize: 500px;
+
+  clip-path: var(--clip);
+
+  background-image:
+    var(--grain),
+    repeating-linear-gradient( 0deg, 
+      var(--sunpillar-clr-1) calc(var(--space)*1), 
+      var(--sunpillar-clr-2) calc(var(--space)*2), 
+      var(--sunpillar-clr-3) calc(var(--space)*3), 
+      var(--sunpillar-clr-4) calc(var(--space)*4), 
+      var(--sunpillar-clr-5) calc(var(--space)*5), 
+      var(--sunpillar-clr-6) calc(var(--space)*6), 
+      var(--sunpillar-clr-1) calc(var(--space)*7)
+    ),
+    repeating-linear-gradient( 
+      var(--angle), 
+      #0e152e 0%, 
+      hsl(180, 10%, 60%) 3.8%, 
+      hsl(180, 29%, 66%) 4.5%, 
+      hsl(180, 10%, 60%) 5.2%, 
+      #0e152e 10% , 
+      #0e152e 12% 
+      ),
+    radial-gradient(
+      farthest-corner circle 
+      at var(--pointer-x) var(--pointer-y),
+      hsla(0, 0%, 0%, 0.1) 12%, 
+      hsla(0, 0%, 0%, 0.15) 20%, 
+      hsla(0, 0%, 0%, 0.25) 120%
+    );
+
+  background-blend-mode: screen, hue, hard-light;
+  background-size: var(--imgsize) 100%, 200% 700%, 300% 100%, 200% 100%;
+  background-position: center, 0% var(--background-y), var(--background-x) var(--background-y), var(--background-x) var(--background-y);
+  
+  filter: brightness(.8) contrast(2.95) saturate(.65);
+
+}
+
+.card[data-rarity="illustration rare"] .card__shine:after {
+
+  content: "";
+
+  background-position: center, 0% var(--background-y), calc( var(--background-x) * -1) calc( var(--background-y) * -1), var(--background-x) var(--background-y);
+  background-size: var(--imgsize) 100%, 200% 400%, 195% 100%, 200% 100%;
+
+  filter: brightness(1) contrast(2.5) saturate(1.75);
+  mix-blend-mode: soft-light;
+
+}
+
+
+.card[data-rarity="illustration rare"] {
+  --clip: polygon(94.8% 2.8%, 95.7% 3.2%, 96.2% 3.8%, 96.2% 96%, 95.9% 96.8%, 94.8% 97.3%, 5% 97.3%, 4.2% 96.9%, 3.8% 96.2%, 3.8% 6.1%, 15% 6.1%, 16% 5%, 17.9% 4%, 19% 2.8%);
+}
+/* .card[data-rarity="illustration rare"][data-subtypes="stage"] {
+  --clip: polygon(94.8% 2.8%, 95.7% 3.2%, 96.2% 3.8%, 96.2% 96%, 95.9% 96.8%, 94.8% 97.3%, 5% 97.3%, 4.2% 96.9%, 3.8% 96.2%, 3.8% 6.1%, 15% 6.1%, 16% 5%, 17.9% 4%, 19% 2.8%);
+} */
+
+
+
+
+
+
+
+
+
+/*
+
+  GLARE LAYERS
+
+*/
+
+.card[data-rarity="illustration rare"] .card__glare {
+
+  clip-path: var(--clip);
+
+  background-image: 
+    radial-gradient( 
+      farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+      hsl(0, 0%, 100%) 0%, 
+      hsl(0, 0%, 0%) 100% 
+    );
+
+  opacity: var(--card-opacity);
+  mix-blend-mode: overlay;
+  filter: brightness(.9) contrast(1.2);
+
+}
+
+.card[data-rarity="illustration rare"] .card__glare2 {
+
+  background-image: 
+    radial-gradient( 
+      farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+      hsl(0, 0%, 100%) 5%, 
+      hsl(0, 0%, 0%) 120% 
+    );
+
+  opacity: calc(var(--card-opacity) * var(--pointer-from-center));
+  mix-blend-mode: screen;
+  filter: brightness(.55) contrast(2);
+
+}

@@ -13,6 +13,7 @@ dist-ssr
 *.local
 public/**/tests
 public/img/foils/
+public/img/foils-clean/
 
 # Editor directories and files
 .vscode/*

@@ -3,6 +3,9 @@
 
   --grain: url("/img/grain.webp");
   --glitter: url("/img/glitter.png");
+  --birthday: url(/img/151/birthday-holo.png);
+  --birthday-dank: url(/img/151/birthday-holo-dank.webp);
+  --birthday-dank2: url(/img/151/birthday-holo-dank-2.webp);
   --glittersize: 25%;
 
   --space: 5%;

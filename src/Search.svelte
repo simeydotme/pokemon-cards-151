@@ -13,6 +13,7 @@
 	let isError = false;
 
 	pokemon.configure({ apiKey: import.meta.env.VITE_API_KEY });
+  window.pokeapi = pokemon;
   
 	const loadQuery = async() => {
 
@@ -27,7 +28,7 @@
 			pokemon.card
 
 				.where({ 
-					q: `( set.id:swsh* AND name:"*${query}*" )`,
+					q: `( set.id:sv* AND name:"*${query}*" )`,
 					select: `id,name,number,supertype,subtypes,rarity,images,types,set`,
 					orderBy: `-set.releaseDate,-number`,
           pageSize: 36
@@ -42,7 +43,8 @@
 
 					let cardsMap = cards.slice(0, 36).map(card => {
 						if ( card.rarity === "Common" || card.rarity === "Uncommon" ) {
-							card.isReverse = !!Math.round(Math.random());
+							// card.isReverse = !!Math.round(Math.random());
+							card.isReverse = true;
 						}
 						card.set = card.set.id;
 						return card;
@@ -60,9 +62,9 @@
         });
 
         // @ts-ignore
-        gtag("event", "search", {
-          search_term: query
-        });
+        // gtag("event", "search", {
+        //   search_term: query
+        // });
 
 
 		},666);
