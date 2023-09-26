@@ -261,6 +261,7 @@ Shine & Glare Effects
 }
 
 .card__glitter {
+  display: none;
   z-index: 2;
 }
 
@@ -293,7 +294,8 @@ Shine & Glare Effects
   
 }
 
-.card__glare {
+.card__glare,
+.card__glare2 {
 
   /* make sure the glare doesn't clip */
   transform: translateZ(1.41px);
@@ -311,7 +313,9 @@ Shine & Glare Effects
   
 }
 
-
+.card__glare2 {
+  display: none;
+}
 
 
 
