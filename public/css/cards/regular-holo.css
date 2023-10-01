@@ -22,14 +22,14 @@
   --bar-rotate: var(--rotate-x);
   
   background-image: 
-  repeating-linear-gradient( 10deg,
-  var( --holo),
-  var( --holo),
-  var( --holo),
-  var( --holo),
-  var( --holo),
-  var( --holo),
-  var( --holo)
+    repeating-linear-gradient( 10deg,
+    var( --holo ),
+    var( --holo ),
+    var( --holo ),
+    var( --holo ),
+    var( --holo ),
+    var( --holo ),
+    var( --holo )
   );
   
   background-position: 

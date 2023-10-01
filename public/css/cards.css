@@ -8,6 +8,12 @@
   --iri1: url("/img/151/iri-1.png");
   --iri2: url("/img/151/iri-2.png");
   --iri3: url("/img/151/iri-3.png");
+  --iri4: url("/img/151/iri-4.png");
+  --iri5: url("/img/151/iri-5.png");
+  --iri6: url("/img/151/iri-6.png");
+  --iri7: url("/img/151/iri-7.png");
+  --iri8: url("/img/151/iri-8.png");
+  --iri9: url("/img/151/iri-9.png");
   --birthday: url(/img/151/birthday-holo.png);
   --birthday-dank: url(/img/151/birthday-holo-dank.webp);
   --birthday-dank2: url(/img/151/birthday-holo-dank-2.webp);
@@ -31,7 +37,9 @@
 
   --clip-trainer: inset(14.5% 8.5% 48.2% 8.5%);
   --clip-borders: inset(2.8% 4% round 2.55% / 1.5%);
+  --clip-borders-invert: polygon(94.8% 2.8%, 95.7% 3.2%, 96.2% 3.8%, 96.2% 96%, 95.9% 96.8%, 94.8% 97.3%, 5% 97.3%, 4.2% 96.9%, 3.8% 96.2%, 3.8% 6.1%, 15% 6.1%, 16% 5%, 17.9% 4%, 19% 2.8%);
 
+  --clip-ex-borders: polygon(0% 0%, 0% 100%, 4% 100%, 4% 18%, 1% 16%, 1% 13%, 3% 10%, 4% 9%, 4% 6%, 9% 6%, 16% 6%, 16% 5%, 18% 4%, 19% 3%, 95% 3%, 97% 4%, 96% 90%, 97% 92%, 97% 94%, 96% 95%, 96% 97%, 95% 97%, 4% 97%, 4% 100%, 100% 100%, 100% 0%);
 }
 
 .card__shine,

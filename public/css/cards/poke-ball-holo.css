@@ -26,7 +26,6 @@
   
   --viewport-edge-clip: polygon(4% 3%, 96% 3%, 96% 97%, 4% 97%, 4% 10%, 7% 10%, 7% 48%, 92% 48%, 92% 10%, 4% 10%);
   --viewport-clip: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10%, 7% 10%, 7% 48%, 92% 48%, 92% 10%, 0 10%);
-  --edge-clip: polygon(94.8% 2.8%, 95.7% 3.2%, 96.2% 3.8%, 96.2% 96%, 95.9% 96.8%, 94.8% 97.3%, 5% 97.3%, 4.2% 96.9%, 3.8% 96.2%, 3.8% 6.1%, 15% 6.1%, 16% 5%, 17.9% 4%, 19% 2.8%);
 
   --inner-brightness: 0.7;
   --outer-brightness: 0.55;
@@ -62,7 +61,7 @@
   content: "";
   --mask: var(--pokeball);
 
-  clip-path: var(--edge-clip);
+  clip-path: var(--clip-borders-invert);
   
   background-image:
     linear-gradient( 45deg, 
@@ -97,7 +96,7 @@
   content: "";
   --mask: var(--pokeball-inner);
   
-  clip-path: var(--edge-clip);
+  clip-path: var(--clip-borders-invert);
   
   background-image:
   linear-gradient( 225deg, 

@@ -1,0 +1,189 @@
+/*
+
+  EX REGULAR
+
+*/
+
+
+
+
+
+
+/*
+
+  SHINE LAYERS
+
+*/
+
+.card[data-rarity="special illustration rare"] {
+  
+  --shift: calc( 3px * var(--card-scale) );
+  --glitter-size: 150px 150px;
+
+}
+
+.card[data-rarity="special illustration rare"] .card__shine {
+
+  filter: brightness(.6) contrast(1.5) saturate(1);
+
+}
+
+.card[data-rarity="special illustration rare"] .card__shine:after {
+    
+  content: "";
+
+  background-image: 
+    linear-gradient( calc((var(--rotate-x) - var(--rotate-delta)) * -0.25), 
+      black 24%, #797979 30%, black 36%
+    ),
+    linear-gradient( calc((var(--rotate-x) - var(--rotate-delta)) * 0.25), 
+      black 24%, #797979 30%, black 36%
+    );
+  
+  background-position: 
+    50% calc( ( var(--background-y) * 1.7 ) ),
+    50% calc( ( var(--background-y) * -1.3 ) );
+  
+  background-size: 
+    300% 300%;
+  
+  background-blend-mode: exclusion;
+  filter: brightness(1) contrast(.75) saturate(1);
+  mix-blend-mode: hard-light;
+
+  z-index: 3;
+
+}
+
+.card[data-rarity="special illustration rare"] .card__shine:before {
+    
+  content: "";
+
+  background-image: 
+    repeating-linear-gradient( 15deg,
+      var( --holo ),
+      var( --holo ),
+      var( --holo )
+    );
+  
+  background-position: 
+    center center;
+  
+  background-size: 
+    240% 240%;
+  
+  filter: brightness(1) contrast(.75) saturate(1);
+  mix-blend-mode: overlay;
+
+  z-index: 2;
+
+}
+
+.card[data-rarity="special illustration rare"] .card__glitter {
+
+  display: grid;
+
+  background-image: var(--iri9);
+  background-size: var(--glitter-size);
+  background-position: center center;
+  background-repeat: repeat;
+
+  filter: brightness(1) contrast(2) saturate(1);
+  mix-blend-mode: color-dodge;
+
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center center;
+  mask-position: center center;
+  -webkit-mask-mode: luminance;
+  mask-mode: luminance;
+
+  opacity: calc( var(--card-opacity) * ( .2 + var(--pointer-from-center) * .5 ) );
+
+}
+
+.card[data-rarity="special illustration rare"] .card__glitter:before,
+.card[data-rarity="special illustration rare"] .card__glitter:after {
+
+  content: "";
+
+  background-image: var(--iri8);
+  background-size: var(--glitter-size);
+  background-position: 
+    calc( 50% + (var( --pointer-from-left ) * var(--shift)) ) 
+    calc( 50% + (var( --pointer-from-top ) * var(--shift)) );
+  background-repeat: repeat;
+
+  filter: brightness(2) contrast(1.2) saturate(2);
+  mix-blend-mode: overlay;
+
+  z-index: 2;
+
+  opacity: var(--pointer-from-top);
+
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center center;
+  mask-position: center center;
+  -webkit-mask-mode: luminance;
+  mask-mode: luminance;
+
+}
+
+.card[data-rarity="special illustration rare"] .card__glitter:after {
+
+  background-image: var(--iri7);
+  background-position: 
+    calc( 50% + (var( --pointer-from-left ) * var(--shift) * -1) ) 
+    calc( 50% + (var( --pointer-from-top ) * var(--shift) * -1) );
+  
+  z-index: 3;
+
+  opacity: calc( var(--pointer-from-top) * -1 + 1 );
+
+}
+
+
+
+
+
+
+
+
+
+
+/*
+
+  GLARE LAYERS
+
+*/
+
+.card[data-rarity="special illustration rare"] .card__glare {
+
+  background-image: radial-gradient( 
+    farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+    hsl(0, 0%, 80%) 10%, 
+    hsl(0, 0%, 50%) 70% 
+    );
+
+    mix-blend-mode: multiply;
+    filter: contrast(1.5);
+
+}
+
+.card[data-rarity="special illustration rare"] .card__glare2 {
+
+  display: block;
+  background: white;
+  mask: var(--foil);
+  mask-mode: luminance;
+  mask-size: cover;
+  mix-blend-mode: overlay;
+
+  filter: contrast(.8);
+
+}

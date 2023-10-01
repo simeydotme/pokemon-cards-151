@@ -39,7 +39,7 @@
   --sunpillar-clr-6: var(--sunpillar-6);
 
   --sunpillar: var(--sunpillar-1) 25%, var(--sunpillar-2), var(--sunpillar-3), var(--sunpillar-4), var(--sunpillar-5), var(--sunpillar-6) 75%;
-  --holo: var(--sunpillar-1), var(--sunpillar-2), var(--sunpillar-3), var(--sunpillar-4), var(--sunpillar-5), var(--sunpillar-6);
+  --holo: var(--sunpillar-1), var(--sunpillar-2), var(--sunpillar-3), var(--sunpillar-4), var(--sunpillar-5), var(--sunpillar-6), var(--sunpillar-1);
 
 }
 
@@ -266,7 +266,9 @@ Shine & Glare Effects
 }
 
 .card__shine:before,
-.card__shine:after {
+.card__shine:after,
+.card__glitter:before,
+.card__glitter:after {
 
   --sunpillar-clr-1: var(--sunpillar-5);
   --sunpillar-clr-2: var(--sunpillar-6);

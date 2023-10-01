@@ -254,7 +254,7 @@
   function foilImage () {
     let suffix = isReverse ? "ph" : "std";
 
-    if ( rarity === "Ultra Rare" ) {
+    if ( ["Ultra Rare", "Special Illustration Rare" ].includes(rarity) ) {
       return `https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/${setId}/${setId}_en_${number.padStart( 3, "0" )}_${suffix}.etch.png`;
     } else {
       return `https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/${setId}/${setId}_en_${number.padStart( 3, "0" )}_${suffix}.foil.png`;

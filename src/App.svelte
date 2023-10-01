@@ -7,7 +7,7 @@
 
 	let test;
 
-	let query = "";
+	let query = "venu";
 	let isLoading = true;
 	
 	const observer = new IntersectionObserver((entries) => {
