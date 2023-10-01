@@ -54,10 +54,22 @@
   if ( isReverse ) {
     // rarity = rarity + " Reverse Holo";
     rarity = rarity + " Pokeball Holo";
+    if ( [1,4,6,25,144,146,161].includes( parseInt(number) ) ) {
+      rarity = "Masterball Holo";
+    } else {
+      // change rarity for 20% of the cards
+      if ( Math.random() < 0.2 ) {
+        rarity = "Masterball Holo";
+      }
+    }
   }
 
   if ( rarity === "Rare" ) {
     rarity = "Rare Holo";
+  }
+
+  if( rarity === "Ultra Rare" ) {
+
   }
 
   // if ( isGallery ) {
@@ -241,10 +253,12 @@
 
   function foilImage () {
     let suffix = isReverse ? "ph" : "std";
-    // return `https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/${setId}/${setId}_en_${number.padStart( 3, "0" )}_std.png`;
-    return `https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/${setId}/${setId}_en_${number.padStart( 3, "0" )}_${suffix}.foil.png`;
-    // sv3-5/sv3-5_en_025_ph.foil.png
-    // return ``;
+
+    if ( rarity === "Ultra Rare" ) {
+      return `https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/${setId}/${setId}_en_${number.padStart( 3, "0" )}_${suffix}.etch.png`;
+    } else {
+      return `https://cdn.malie.io/file/malie-io/tcgl/cards/png/en/${setId}/${setId}_en_${number.padStart( 3, "0" )}_${suffix}.foil.png`;
+    }
   }
 
   function maskImage () {

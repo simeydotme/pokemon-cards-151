@@ -7,8 +7,23 @@
 
 	let test;
 
-	let query = "cha";
+	let query = "";
 	let isLoading = true;
+	
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (!entry.isIntersecting) {
+				// If the element is not intersecting with the viewport, hide it
+				entry.target.classList.add('offscreen');
+			} else {
+				// If the element is intersecting with the viewport, show it
+				entry.target.classList.remove('offscreen');
+			}
+		});
+	}, {
+		threshold: 0.5, // Threshold for intersection, 1.0 means fully visible
+		rootMargin: `${document.body.clientHeight}px 0px ${document.body.clientHeight}px 0px` // Margin around viewport to check for intersection
+	});
 
 	const getCards = async () => {
 		let promiseArray = [];
@@ -27,8 +42,20 @@
 			});
 	};
 
+	const observeCards = () => {
+		// Add observer to cards you want to hide
+		const cards = document.querySelectorAll('.card');
+		console.log(cards);
+		cards.forEach((card) => {
+			observer.observe(card);
+		});
+	};
+
 	onMount(() => {
-		loadCards();
+		loadCards().then(() => {
+			console.log("loaded, observe");
+			observeCards();
+		});
 		const $headings = document.querySelectorAll("h1,h2,h3");
 		const $anchor = [...$headings].filter((el) => {
 			const id = el.getAttribute("id")?.replace(/^.*?-/g,"");
@@ -94,7 +121,7 @@
 		</section>
 	</header>
 
-	<Search bind:query />
+	<Search bind:query {observer} {observeCards} />
 
 	{#if false}
 

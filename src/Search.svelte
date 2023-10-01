@@ -6,16 +6,23 @@
 	import Card from "./lib/components/CardProxy.svelte";
 
 	export let query = "";
+  export let observer;
+  export let observeCards = () => {};
 
 	let loadingQuery = true;
 	let queryTimer;
 	let queryResult = [];
 	let isError = false;
+  let pageSize = 220;
 
 	pokemon.configure({ apiKey: import.meta.env.VITE_API_KEY });
   window.pokeapi = pokemon;
   
 	const loadQuery = async() => {
+
+    const set = `set.id:sv3pt5`;
+    const setQuery = !!query ? `AND name:"*${query}*"` : "";
+    const q = `( ${set} ${setQuery} )`;
 
     if ( !usableQuery ) {
       return;
@@ -28,10 +35,10 @@
 			pokemon.card
 
 				.where({ 
-					q: `( set.id:sv* AND name:"*${query}*" )`,
+					q: q,
 					select: `id,name,number,supertype,subtypes,rarity,images,types,set`,
-					orderBy: `-set.releaseDate,-number`,
-          pageSize: 36
+					orderBy: `-set.releaseDate,number`,
+          pageSize: pageSize
 				})
 
 				.then(result => {
@@ -41,7 +48,7 @@
           queryResult = [];
           isError = false;
 
-					let cardsMap = cards.slice(0, 36).map(card => {
+					let cardsMap = cards.slice(0, pageSize).map(card => {
 						if ( card.rarity === "Common" || card.rarity === "Uncommon" ) {
 							// card.isReverse = !!Math.round(Math.random());
 							card.isReverse = true;
@@ -54,6 +61,10 @@
 					loadingQuery = false;
 
 			  })
+        
+        .then(() => {
+          observeCards();
+        })
         
         .catch((a,b,c) => {
           queryResult = [];
@@ -70,8 +81,8 @@
 		},666);
 	};
 
-  $: usableQuery = query.length > 2;
-	$: query && loadQuery();
+  $: usableQuery = !query || query.length > 2;
+	$: usableQuery && loadQuery();
 
 </script>
 

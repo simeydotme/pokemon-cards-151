@@ -21,6 +21,8 @@
 
 .card[data-rarity="double rare"] .card__glitter {
 
+  display: block;
+
   background-image: 
     radial-gradient( 
       farthest-corner circle at var(--pointer-x) var(--pointer-y),
@@ -56,7 +58,6 @@
     mask-composite: intersect;
     -webkit-mask-size: cover;
     mask-size: cover;
-
 
   background-size: cover, 500% 500%, 120% 120%, 120% 120%;
   background-position: center center, var(--pointer-x) var(--pointer-y), center center, center center;

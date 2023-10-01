@@ -3,6 +3,11 @@
 
   --grain: url("/img/grain.webp");
   --glitter: url("/img/glitter.png");
+  --noise: url("/img/151/noise-base.png");
+  --noise-over: url("/img/151/noise-top.png");
+  --iri1: url("/img/151/iri-1.png");
+  --iri2: url("/img/151/iri-2.png");
+  --iri3: url("/img/151/iri-3.png");
   --birthday: url(/img/151/birthday-holo.png);
   --birthday-dank: url(/img/151/birthday-holo-dank.webp);
   --birthday-dank2: url(/img/151/birthday-holo-dank-2.webp);
@@ -35,4 +40,10 @@
   will-change: transform, opacity, background-image, background-size,
     background-position, background-blend-mode, filter;
  
+}
+
+.card.offscreen {
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  visibility: hidden;
 }

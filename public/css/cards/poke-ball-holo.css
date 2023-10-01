@@ -100,7 +100,7 @@
   clip-path: var(--edge-clip);
   
   background-image:
-  linear-gradient( 125deg, 
+  linear-gradient( 225deg, 
     var(--sunpillar-4), 
     var(--sunpillar-5), 
     var(--sunpillar-6), 
@@ -115,14 +115,15 @@
     var(--sunpillar-3),  
     var(--sunpillar-4)
   ),
-  var(--glitter);
+  var(--noise),
+  var(--iri1);
       
-  background-size: 170% 170%, 300px 300px;
-  background-position: var(--pointer-y) var(--pointer-x), calc(var(--seedx) * 500px) calc(var(--seedy) * 500px);
-  background-blend-mode: difference;
+  background-size: 170% 170%, 300px 300px, 300px 300px;
+  background-position: var(--pointer-y) var(--pointer-x), calc(var(--seedx) * 500px) calc(var(--seedy) * 500px), calc(var(--seedx) * 500px) calc(var(--seedy) * 500px);
+  background-blend-mode: darken, color-burn;
   
-  filter: brightness(var(--inner-brightness)) contrast(1.8) saturate(calc( .5 + var(--pointer-from-center) ));
-  mix-blend-mode: plus-lighter;
+  filter: brightness(.75) contrast(2) saturate(calc( var(--pointer-from-center) ));
+  mix-blend-mode: lighten;
   
   opacity: calc( var(--card-opacity) + ( var(--pointer-from-center)) - 0.75 );
       
