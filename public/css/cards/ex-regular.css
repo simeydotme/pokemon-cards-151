@@ -40,27 +40,28 @@
       ),
       var(--mask);
 
-      mask-image: 
-        radial-gradient(
-          farthest-corner circle at var(--pointer-x) var(--pointer-y), 
-          transparent 30%, 
-          black 100% 
-        ),
-        var(--mask);
+    mask-image: 
+      radial-gradient(
+        farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+        transparent 30%, 
+        black 100% 
+      ),
+      var(--mask);
 
     -webkit-mask-mode: alpha, luminance;
     mask-mode: alpha, luminance;
-    -webkit-mask-composite: intersect;
+    -webkit-mask-composite: destination-in;
     mask-composite: intersect;
     -webkit-mask-size: cover;
     mask-size: cover;
 
-  background-size: cover, 500% 500%, 120% 120%, 120% 120%;
+  background-size: cover, 500% 500%, 140% 140%, 120% 120%;
   background-position: center center, var(--pointer-x) var(--pointer-y), center center, center center;
-  background-blend-mode: darken, hue, color-dodge;
+  background-blend-mode: darken, hue, lighten;
 
   mix-blend-mode: hard-light;
-  filter: brightness(3) contrast(.75) saturate(.75);
+  filter: brightness(2) contrast(.5) saturate(.75);
+
 
 }
 

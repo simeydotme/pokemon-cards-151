@@ -1,84 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- meta -->
+    <title>Pokémon Cards CSS Holographic Effect</title>
+    <meta
+      name="description"
+      content="An exploration of what's possible with CSS for Pokemon Cards, simeydotme (Simon Goellner)"
+    />
 
-		<!-- meta -->
-		<title>Pokémon Cards CSS Holographic Effect</title>
-		<meta name="description" content="An exploration of what's possible with CSS for Pokemon Cards, simeydotme (Simon Goellner)" />
-		
-		<link rel="canonical" href="https://poke-holo.simey.me" />
-		<link rel="icon" href="favicon.png" />
-		<meta name="thumbnail" content="thumb.png" />
+    <link rel="canonical" href="https://poke-holo.simey.me" />
+    <link rel="icon" href="favicon.png" />
+    <meta name="thumbnail" content="thumb.png" />
 
-		<meta property="og:url" content="https://poke-holo.simey.me" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Pokémon Cards CSS Holographic Effect" />
-		<meta property="og:description" content="An exploration of what's possible with CSS for Pokemon Cards, simeydotme (Simon Goellner)" />
-		<meta property="og:image" content="https://poke-holo.simey.me/thumb.png" />
+    <meta property="og:url" content="https://poke-holo.simey.me" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pokémon Cards CSS Holographic Effect" />
+    <meta
+      property="og:description"
+      content="An exploration of what's possible with CSS for Pokemon Cards, simeydotme (Simon Goellner)"
+    />
+    <meta property="og:image" content="https://poke-holo.simey.me/thumb.png" />
 
-		<meta name="twitter:title" content="Pokémon Cards CSS Holographic Effect">
-		<meta name="twitter:description" content="An exploration of what's possible with CSS for Pokemon Cards, simeydotme (Simon Goellner)">
-		<meta name="twitter:image" content="https://poke-holo.simey.me/thumb.png">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@simeydotme">
+    <meta name="twitter:title" content="Pokémon Cards CSS Holographic Effect" />
+    <meta
+      name="twitter:description"
+      content="An exploration of what's possible with CSS for Pokemon Cards, simeydotme (Simon Goellner)"
+    />
+    <meta name="twitter:image" content="https://poke-holo.simey.me/thumb.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@simeydotme" />
 
-		<!-- fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,700;1,300;1,700&family=Roboto:ital,wght@0,300;0,700;1,300;1,700&display=swap"> 
-		
-		<!-- styles -->
-		<link rel="stylesheet" href="css/global.css" />
-		
-		<link rel="stylesheet" href="css/cards/base.css" />
-		<link rel="stylesheet" href="css/cards.css" />
-		<link rel="stylesheet" href="css/cards/basic.css" />
-		<link rel="stylesheet" href="css/cards/reverse-holo.css" />
-		<link rel="stylesheet" href="css/cards/regular-holo.css" />
-		<link rel="stylesheet" href="css/cards/cosmos-holo.css" />
-		<link rel="stylesheet" href="css/cards/ex-regular.css" />
-		<link rel="stylesheet" href="css/cards/ex-full-art.css" />
-		<link rel="stylesheet" href="css/cards/illustration-rare.css" />
-		<link rel="stylesheet" href="css/cards/poke-ball-holo.css" />
-		<link rel="stylesheet" href="css/cards/ex-special-illustration-rare.css" />
-		<!-- <link rel="stylesheet" href="css/cards/amazing-rare.css" />
-		<link rel="stylesheet" href="css/cards/radiant-holo.css" />
-		<link rel="stylesheet" href="css/cards/v-regular.css" />
-		<link rel="stylesheet" href="css/cards/v-full-art.css" />
-		<link rel="stylesheet" href="css/cards/v-max.css" />
-		<link rel="stylesheet" href="css/cards/v-star.css" />
-		<link rel="stylesheet" href="css/cards/trainer-full-art.css" />
-		<link rel="stylesheet" href="css/cards/rainbow-holo.css" />
-		<link rel="stylesheet" href="css/cards/rainbow-alt.css" />
-		<link rel="stylesheet" href="css/cards/secret-rare.css" />
-		<link rel="stylesheet" href="css/cards/trainer-gallery-holo.css" />
-		<link rel="stylesheet" href="css/cards/trainer-gallery-v-regular.css" />
-		<link rel="stylesheet" href="css/cards/trainer-gallery-v-max.css" />
-		<link rel="stylesheet" href="css/cards/trainer-gallery-secret-rare.css" />
-		<link rel="stylesheet" href="css/cards/shiny-rare.css" />
-		<link rel="stylesheet" href="css/cards/shiny-v.css" />
-		<link rel="stylesheet" href="css/cards/shiny-vmax.css" />
-		<link rel="stylesheet" href="css/cards/swsh-pikachu.css" /> -->
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,700;1,300;1,700&family=Roboto:ital,wght@0,300;0,700;1,300;1,700&display=swap"
+    />
 
-	</head>
-	<body>
-			
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA%"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', '%VITE_GA%', {
-			'linker': { 'domains': ['poke-holo.simey.me', 'deck-24abcd.netlify.app'] }
-		});
-	</script>
+    <!-- styles -->
+    <link rel="stylesheet" href="css/global.css" />
+
+    <link rel="stylesheet" href="css/cards/base.css" />
+    <link rel="stylesheet" href="css/cards.css" />
+    <link rel="stylesheet" href="css/cards/basic.css" />
+    <link rel="stylesheet" href="css/cards/reverse-holo.css" />
+    <link rel="stylesheet" href="css/cards/regular-holo.css" />
+    <link rel="stylesheet" href="css/cards/ex-regular.css" />
+    <link rel="stylesheet" href="css/cards/ex-full-art.css" />
+    <link rel="stylesheet" href="css/cards/illustration-rare.css" />
+    <link rel="stylesheet" href="css/cards/poke-ball-holo.css" />
+    <link rel="stylesheet" href="css/cards/ex-special-illustration-rare.css" />
+    <link rel="stylesheet" href="css/cards/hyper-rare.css" />
+  </head>
+  <body>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA%"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "%VITE_GA%", {
+        linker: { domains: ["poke-holo.simey.me", "deck-24abcd.netlify.app"] },
+      });
+    </script>
 
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-
-	</body>
+  </body>
 </html>

@@ -14,6 +14,8 @@ dist-ssr
 public/**/tests
 public/img/foils/
 public/img/foils-clean/
+public/img/151/etches/
+public/img/151/foils/
 
 # Editor directories and files
 .vscode/*

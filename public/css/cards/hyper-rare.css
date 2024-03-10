@@ -15,20 +15,20 @@
 
 */
 
-.card[data-rarity="special illustration rare"] {
+.card[data-rarity="hyper rare"] {
   
   --shift: calc( 3px * var(--card-scale) );
   --glitter-size: 150px 150px;
 
 }
 
-.card[data-rarity="special illustration rare"] .card__shine {
+.card[data-rarity="hyper rare"] .card__shine {
 
   filter: brightness(.6) contrast(1.5) saturate(1);
 
 }
 
-.card[data-rarity="special illustration rare"] .card__shine:after {
+.card[data-rarity="hyper rare"] .card__shine:after {
     
   content: "";
 
@@ -55,7 +55,7 @@
 
 }
 
-.card[data-rarity="special illustration rare"] .card__shine:before {
+.card[data-rarity="hyper rare"] .card__shine:before {
     
   content: "";
 
@@ -79,7 +79,7 @@
 
 }
 
-.card[data-rarity="special illustration rare"] .card__glitter {
+.card[data-rarity="hyper rare"] .card__glitter {
 
   display: grid;
 
@@ -100,12 +100,12 @@
   -webkit-mask-mode: luminance;
   mask-mode: luminance;
 
-  opacity: calc( var(--card-opacity) * ( .2 + var(--pointer-from-center) * .5 ) );
+  opacity: calc( var(--card-opacity) * ( .2 + var(--pointer-from-center) * .3 ) );
 
 }
 
-.card[data-rarity="special illustration rare"] .card__glitter:before,
-.card[data-rarity="special illustration rare"] .card__glitter:after {
+.card[data-rarity="hyper rare"] .card__glitter:before,
+.card[data-rarity="hyper rare"] .card__glitter:after {
 
   content: "";
 
@@ -134,7 +134,7 @@
 
 }
 
-.card[data-rarity="special illustration rare"] .card__glitter:after {
+.card[data-rarity="hyper rare"] .card__glitter:after {
 
   background-image: var(--iri7);
   background-position: 
@@ -162,7 +162,7 @@
 
 */
 
-.card[data-rarity="special illustration rare"] .card__glare {
+.card[data-rarity="hyper rare"] .card__glare {
 
   background-image: radial-gradient( 
     farthest-corner circle at var(--pointer-x) var(--pointer-y), 
@@ -175,7 +175,7 @@
 
 }
 
-.card[data-rarity="special illustration rare"] .card__glare2 {
+.card[data-rarity="hyper rare"] .card__glare2 {
 
   display: block;
   background: white;

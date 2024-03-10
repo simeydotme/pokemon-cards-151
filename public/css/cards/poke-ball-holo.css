@@ -19,10 +19,10 @@
 .card[data-rarity$="pokeball holo"],
 .card[data-rarity$="masterball holo"] {
   
-  --pokeball: url(/img/151/pokeball-outer.webp);
-  --pokeball-inner: url(/img/151/pokeball-inner.webp);
-  --masterball: url(/img/151/masterball-outer.webp);
-  --masterball-inner: url(/img/151/masterball-inner.webp);
+  --pokeball: url(https://poke-holo.b-cdn.net/foils/151/pokeball-outer.webp);
+  --pokeball-inner: url(https://poke-holo.b-cdn.net/foils/151/pokeball-inner.webp);
+  --masterball: url(https://poke-holo.b-cdn.net/foils/151/masterball-outer.webp);
+  --masterball-inner: url(https://poke-holo.b-cdn.net/foils/151/masterball-inner.webp);
   
   --viewport-edge-clip: polygon(4% 3%, 96% 3%, 96% 97%, 4% 97%, 4% 10%, 7% 10%, 7% 48%, 92% 48%, 92% 10%, 4% 10%);
   --viewport-clip: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10%, 7% 10%, 7% 48%, 92% 48%, 92% 10%, 0 10%);

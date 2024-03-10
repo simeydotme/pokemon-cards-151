@@ -1,22 +1,21 @@
-
 .card {
 
-  --grain: url("/img/grain.webp");
-  --glitter: url("/img/glitter.png");
-  --noise: url("/img/151/noise-base.png");
-  --noise-over: url("/img/151/noise-top.png");
-  --iri1: url("/img/151/iri-1.png");
-  --iri2: url("/img/151/iri-2.png");
-  --iri3: url("/img/151/iri-3.png");
-  --iri4: url("/img/151/iri-4.png");
-  --iri5: url("/img/151/iri-5.png");
-  --iri6: url("/img/151/iri-6.png");
-  --iri7: url("/img/151/iri-7.png");
-  --iri8: url("/img/151/iri-8.png");
-  --iri9: url("/img/151/iri-9.png");
-  --birthday: url(/img/151/birthday-holo.png);
-  --birthday-dank: url(/img/151/birthday-holo-dank.webp);
-  --birthday-dank2: url(/img/151/birthday-holo-dank-2.webp);
+  --grain: url(/img/grain.webp);
+  --glitter: url(/img/glitter.webp);
+  --noise: url(https://poke-holo.b-cdn.net/foils/151/noise-base.webp);
+  --noise-over: url(https://poke-holo.b-cdn.net/foils/151/noise-top.webp);
+  --iri1: url(https://poke-holo.b-cdn.net/foils/151/iri-1.webp);
+  --iri2: url(https://poke-holo.b-cdn.net/foils/151/iri-2.webp);
+  --iri3: url(https://poke-holo.b-cdn.net/foils/151/iri-3.webp);
+  --iri4: url(https://poke-holo.b-cdn.net/foils/151/iri-4.webp);
+  --iri5: url(https://poke-holo.b-cdn.net/foils/151/iri-5.webp);
+  --iri6: url(https://poke-holo.b-cdn.net/foils/151/iri-6.webp);
+  --iri7: url(https://poke-holo.b-cdn.net/foils/151/iri-7.webp);
+  --iri8: url(https://poke-holo.b-cdn.net/foils/151/iri-8.webp);
+  --iri9: url(https://poke-holo.b-cdn.net/foils/151/iri-9.webp);
+  --birthday: url(https://poke-holo.b-cdn.net/foils/151/birthday-holo.webp);
+  --birthday-dank: url(https://poke-holo.b-cdn.net/foils/151/birthday-holo-dank.webp);
+  --birthday-dank2: url(https://poke-holo.b-cdn.net/foils/151/birthday-holo-dank-2.webp);
   --glittersize: 25%;
 
   --space: 5%;
@@ -29,7 +28,7 @@
   --blue: #0dbde9;
   --violet: #c929f1;
 
-  --clip: inset( 9.85% 8% 52.85% 8% );
+  --clip: inset(9.85% 8% 52.85% 8%);
   --clip-invert: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0 47.15%, 91.5% 47.15%, 91.5% 9.85%, 8% 9.85%, 8% 47.15%, 0 50%);
 
   --clip-stage: polygon(91.5% 9.85%, 57% 9.85%, 54% 12%, 17% 12%, 16% 14%, 12% 16%, 8% 16%, 8% 47.15%, 92% 47.15%);
@@ -44,10 +43,10 @@
 
 .card__shine,
 .card__glare {
-  
+
   will-change: transform, opacity, background-image, background-size,
     background-position, background-blend-mode, filter;
- 
+
 }
 
 .card.offscreen {

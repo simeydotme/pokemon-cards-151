@@ -22,10 +22,11 @@
 .card[data-rarity="ultra rare"][data-subtypes*="supporter"] .card__shine:after {
 
   --space: 5%;
-  --angle: 133deg;
+  --angle: 128.5deg;
   --imgsize: cover;
 
   background-image:
+    var(--mask),
     var(--foil),
     repeating-linear-gradient( 0deg, 
       var(--sunpillar-clr-1) calc(var(--space)*1), 
@@ -42,8 +43,8 @@
       hsl(180, 10%, 60%) 3.8%, 
       hsl(180, 29%, 66%) 4.5%, 
       hsl(180, 10%, 60%) 5.2%, 
-      #0e152e 10% , 
-      #0e152e 12% 
+      #0e152e 14% , 
+      #0e152e 16% 
       ),
     radial-gradient(
       farthest-corner circle 
@@ -54,15 +55,16 @@
     );
 
   background-position: 
-    center center, 
+  center center, 
+  center center, 
     0% var(--background-y), 
     calc( var(--background-x) + (var(--background-y)*0.2) ) var(--background-y), 
     var(--background-x) var(--background-y);
 
-  background-blend-mode: soft-light, hue, hard-light;
-  background-size: var(--imgsize), 200% 700%, 300% 100%, 200% 100%;
+  background-blend-mode: soft-light, soft-light, hue, hard-light;
+  background-size: var(--imgsize), var(--imgsize), 200% 700%, 300% 100%, 200% 100%;
 
-  filter: brightness(calc((var(--pointer-from-center)*0.4) + .6)) contrast(1.7) saturate(1.25);
+  filter: brightness(calc((var(--pointer-from-center)*0.4) + .5)) contrast(2.5) saturate(.66);
 
 }
 
@@ -73,13 +75,14 @@
 
   background-position: 
     center center, 
+    center center, 
     0% var(--background-y), 
     calc( (var(--background-x) + (var(--background-y)*0.2)) * -1) calc( var(--background-y) * -1), 
     var(--background-x) var(--background-y);
 
-  background-size: var(--imgsize), 200% 400%, 195% 100%, 200% 100%;
+  background-size: var(--imgsize), var(--imgsize), 200% 400%, 195% 100%, 200% 100%;
 
-  filter: brightness(calc((var(--pointer-from-center)*.4) + .7)) contrast(1.7) saturate(1);
+  filter: brightness(calc((var(--pointer-from-center)*.4) + .5)) contrast(1.66) saturate(1);
   mix-blend-mode: exclusion;
 
 }
