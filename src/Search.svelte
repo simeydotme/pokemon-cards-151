@@ -8,7 +8,7 @@
     name="search"
     id="search"
     bind:value={query}
-    placeholder="eg: Morpeko or Marnie"
+    placeholder="eg: Charizard"
   />
 
   <svg
