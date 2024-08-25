@@ -17,9 +17,6 @@
   export let img = undefined;
   export let back = undefined;
 
-  // context/environment props
-  export let showcase = false;
-
   let cardSlot;
   let isInViewport = false;
 
@@ -55,7 +52,7 @@
     setId = setId.replace("pt", "-");
   }
 
-  if ([1, 4, 7, 25, 144, 146, 161].includes(parseInt(number))) {
+  if ([1, 4, 7, 25, 133, 144, 146, 161].includes(parseInt(number))) {
     rarity = "Masterball Holo";
     isReverse = true;
   } else if (isReverse) {
@@ -125,7 +122,6 @@
     subtypes,
     supertype,
     rarity,
-    showcase,
   };
 </script>
 

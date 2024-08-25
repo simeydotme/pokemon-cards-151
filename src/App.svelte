@@ -7,10 +7,13 @@
   import { flip } from "svelte/animate";
   import { quintOut } from "svelte/easing";
 
-  let initialCards;
+  let visibleCards;
 
   let query = "";
+  let prevQuery = "";
   let isLoading = true;
+  let gridEl;
+  let searchEl;
 
   const getCards = async () => {
     let promiseArray = [];
@@ -29,35 +32,111 @@
         card.set = card.set.id;
         return card;
       });
-      initialCards = cardsMap;
+      visibleCards = cardsMap;
       isLoading = false;
     });
   };
 
-  onMount(() => {
-    loadCards();
-    const $headings = document.querySelectorAll("h1,h2,h3");
-    const $anchor = [...$headings].filter((el) => {
-      const id = el.getAttribute("id")?.replace(/^.*?-/g, "");
-      const hash = window.location.hash?.replace(/^.*?-/g, "");
-      return id === hash;
-    })[0];
-    if ($anchor) {
-      setTimeout(() => {
-        $anchor.scrollIntoView();
-      }, 100);
+  const searchFromUrl = () => {
+    const url = new URL(window.location.href);
+    return url.searchParams.get("poke");
+  };
+
+  const filterFromQuery = (query) => {
+    if (query) {
+      const customSet = customFilters(query);
+      if (customSet.length) {
+        visibleCards = customSet;
+      } else {
+        visibleCards = window.cards.filter((card) => {
+          return query.split(",").some((q) => cardFilter(q, card));
+        });
+      }
+    } else {
+      visibleCards = window.cards;
     }
+
+    if (prevQuery !== query) {
+      requestAnimationFrame(() => {
+        searchEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    prevQuery = query;
+  };
+
+  const customFilters = (query) => {
+    let customSet = [];
+
+    if (query === "starters") {
+      [166, 168, 170, 1, 4, 7].forEach((cardNumber) => {
+        const card = window.cards.find(
+          (card) => card.number === cardNumber.toString(),
+        );
+        if (card) {
+          customSet.push(card || {});
+        }
+      });
+    } else if (query === "lets-go") {
+      [25, 133, 26, 134, 135, 136].forEach((cardNumber) => {
+        const card = window.cards.find(
+          (card) => card.number === cardNumber.toString(),
+        );
+        if (card) {
+          customSet.push(card || {});
+        }
+      });
+    } else if (query === "starter-evolutions") {
+      [
+        1, 2, 3, 166, 167, 198, 4, 5, 6, 168, 169, 199, 7, 8, 9, 170, 171, 200,
+      ].forEach((cardNumber) => {
+        const card = window.cards.find(
+          (card) => card.number === cardNumber.toString(),
+        );
+        if (card) {
+          customSet.push(card || {});
+        }
+      });
+    } else if (query === "shinies") {
+      customSet = window.cards.filter((card) => {
+        return card.rarity === "Rare";
+      });
+    } else if (query === "ex-cards") {
+      customSet = window.cards.filter((card) => {
+        return card.rarity === "Double Rare";
+      });
+    } else if (query === "illustrations") {
+      customSet = window.cards.filter((card) => {
+        return card.rarity.includes("Illustration Rare");
+      });
+    } else if (query === "full-arts") {
+      customSet = window.cards.filter((card) => {
+        return card.rarity.includes("Ultra Rare");
+      });
+    }
+
+    return customSet;
+  };
+
+  const cardFilter = (q, card) => {
+    if (!isNaN(parseInt(q))) {
+      return parseInt(card.number) === parseInt(q);
+    } else if (q === "starters") {
+      return [1, 4, 7, 166, 168, 170, 25, 133].includes(parseInt(card.number));
+    }
+    return card.name.toLowerCase().includes(q.toLowerCase());
+  };
+
+  onMount(async () => {
+    await loadCards();
+    query = searchFromUrl() || "";
+
+    window.addEventListener("popstate", async () => {
+      query = searchFromUrl() || "";
+    });
   });
 
-  $: {
-    if (query.length > 0) {
-      initialCards = window.cards.filter((card) => {
-        return card.name.toLowerCase().includes(query.toLowerCase());
-      });
-    } else {
-      initialCards = window.cards;
-    }
-  }
+  $: filterFromQuery(query);
 </script>
 
 <main>
@@ -129,13 +208,18 @@
     </section>
   </header>
 
-  <Search bind:query />
+  <Search bind:query bind:cardSearch={searchEl} />
 
-  <CardList>
+  <CardList bind:cardGrid={gridEl}>
     {#if isLoading}
       loading...
+    {:else if visibleCards.length === 0}
+      <div class="no-cards">
+        <h2>Whoops</h2>
+        <p>No cards found for your search: '{query}'.</p>
+      </div>
     {:else}
-      {#each initialCards as card, index (card.id)}
+      {#each visibleCards as card, index (card.id)}
         <div
           class="card-slot"
           style="--row: {Math.ceil((index + 1) / 3)};"

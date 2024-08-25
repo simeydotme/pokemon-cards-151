@@ -22,9 +22,6 @@
   export let foil = "";
   export let mask = "";
 
-  // context/environment props
-  export let showcase = false;
-
   const randomSeed = {
     x: Math.random(),
     y: Math.random(),
@@ -64,22 +61,7 @@
   let springTranslate = spring({ x: 0, y: 0 }, springPopoverSettings);
   let springScale = spring(1, springPopoverSettings);
 
-  let showcaseInterval;
-  let showcaseTimerStart;
-  let showcaseTimerEnd;
-  let showcaseRunning = showcase;
-
-  const endShowcase = () => {
-    if (showcaseRunning) {
-      clearTimeout(showcaseTimerEnd);
-      clearTimeout(showcaseTimerStart);
-      clearInterval(showcaseInterval);
-      showcaseRunning = false;
-    }
-  };
-
   const interact = (e) => {
-    endShowcase();
 
     if (!isVisible) {
       return (interacting = false);
@@ -342,7 +324,6 @@
 
   document.addEventListener("visibilitychange", (e) => {
     isVisible = document.visibilityState === "visible";
-    endShowcase();
     reset();
   });
 
@@ -360,48 +341,6 @@
     // set the front image on mount so that
     // the lazyloading can work correctly
     front_img = img_base + img;
-
-    // run a cute little animation on load
-    // for showcase card
-    if (showcase && isVisible) {
-      let showTimer;
-      const s = 0.02;
-      const d = 0.5;
-      let r = 0;
-      showcaseTimerStart = setTimeout(() => {
-        interacting = true;
-        active = true;
-        springRotate.stiffness = s;
-        springRotate.damping = d;
-        springGlare.stiffness = s;
-        springGlare.damping = d;
-        springBackground.stiffness = s;
-        springBackground.damping = d;
-        if (isVisible) {
-          showcaseInterval = setInterval(function () {
-            r += 0.05;
-            springRotate.set({ x: Math.sin(r) * 25, y: Math.cos(r) * 25 });
-            springGlare.set({
-              x: 55 + Math.sin(r) * 55,
-              y: 55 + Math.cos(r) * 55,
-              o: 0.8,
-            });
-            springBackground.set({
-              x: 20 + Math.sin(r) * 20,
-              y: 20 + Math.cos(r) * 20,
-            });
-          }, 20);
-          showcaseTimerEnd = setTimeout(() => {
-            clearInterval(showcaseInterval);
-            interactEnd(null, 0);
-          }, 4000);
-        } else {
-          interacting = false;
-          active = false;
-          return;
-        }
-      }, 2000);
-    }
   });
 </script>
 

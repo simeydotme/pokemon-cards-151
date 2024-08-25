@@ -1,10 +1,10 @@
 <script>
   import { activeCard } from "./lib/stores/activeCard.js";
-  let thisGrid;
-  $: active = thisGrid && thisGrid.contains($activeCard);
+  export let cardGrid;
+  $: active = cardGrid && cardGrid.contains($activeCard);
 </script>
 
-<section class="card-grid" class:active bind:this={thisGrid}>
+<section class="card-grid" class:active bind:this={cardGrid}>
   <slot />
 </section>
 
@@ -19,6 +19,7 @@
     margin: auto;
     padding: 50px;
     position: relative;
+    scroll-margin-top: 100px;
   }
 
   .card-grid.active {
