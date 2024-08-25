@@ -165,9 +165,9 @@
   <title>{(getSpecialMetaTags(query).title || "Holographic CSS Effects") + " | Pokemon Cards 151"}</title>
   <meta name="description" content={getSpecialMetaTags(query).description ||
     "Pokemon Cards 151, a collection of advanced CSS styles to create realistic-looking effects for the faces of Pokemon cards."} />
-  <meta property="og:url" content="https://poke-holo.simey.me" />
+  <meta property="og:url" content="https://poke-151.simey.me" />
   {#if !query}
-    <meta property="og:image" content="https://poke-holo.simey.me/thumb.png" />
+    <meta property="og:image" content="https://poke-151.simey.me/thumb.png" />
   {:else}
     {#each visibleCards as card}
       <meta property="og:image" content={`https://images.pokemontcg.io/sv3pt5/${card.number}.png`} />
@@ -204,7 +204,7 @@
 
     <section class="intro" id="⚓-intro">
       <p>
-        A re-build of my <a href="https://poke-holo.simey.me"
+        A re-build of my <a href="https://poke-151.simey.me"
           >Pokemon Realistic Cards project</a
         >, but for the legendary Pokemon 151 set (sv3.6);
       </p>
