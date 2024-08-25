@@ -121,8 +121,6 @@
   const cardFilter = (q, card) => {
     if (!isNaN(parseInt(q))) {
       return parseInt(card.number) === parseInt(q);
-    } else if (q === "starters") {
-      return [1, 4, 7, 166, 168, 170, 25, 133].includes(parseInt(card.number));
     }
     return card.name.toLowerCase().includes(q.toLowerCase());
   };
@@ -136,8 +134,46 @@
     });
   });
 
+  const getSpecialMetaTags = (q) => {
+    if (q === "starters") {
+      return {
+        title: "Starters",
+        description:
+          "Bulbasaur, Charmander, Squirtle! I choose you! (with holographic effects)",
+      };
+    } else if (q === "lets-go") {
+      return {
+        title: "Let's Go",
+        description:
+          "Pokemon Let's Go, Pikachu & Eevee!",
+      };
+      
+    } else {
+      return {
+        title: visibleCards.map((card) => card.name).join(", "),
+        description: "",
+      };
+    }
+
+    return {};
+  };
+
   $: filterFromQuery(query);
 </script>
+
+<svelte:head>
+  <title>{(getSpecialMetaTags(query).title || "Holographic CSS Effects") + " | Pokemon Cards 151"}</title>
+  <meta name="description" content={getSpecialMetaTags(query).description ||
+    "Pokemon Cards 151, a collection of advanced CSS styles to create realistic-looking effects for the faces of Pokemon cards."} />
+  <meta property="og:url" content="https://poke-holo.simey.me" />
+  {#if !query}
+    <meta property="og:image" content="https://poke-holo.simey.me/thumb.png" />
+  {:else}
+    {#each visibleCards as card}
+      <meta property="og:image" content={`https://images.pokemontcg.io/sv3pt5/${card.number}.png`} />
+    {/each}
+  {/if}
+</svelte:head>
 
 <main>
   <header>
