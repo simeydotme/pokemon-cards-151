@@ -150,7 +150,7 @@
       
     } else {
       return {
-        title: visibleCards.map((card) => card.name).join(", "),
+        title: visibleCards && visibleCards.length ? visibleCards.map((card) => card.name).join(", ") : "",
         description: "",
       };
     }
