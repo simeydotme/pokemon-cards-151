@@ -14,12 +14,15 @@
 
   const updateUrl = debounce((e) => {
     const url = new URL(window.location.href);
+    const previousSearchParams = url.searchParams.get("poke");
     if (query === "") {
       url.searchParams.delete("poke");
     } else {
       url.searchParams.set("poke", query);
     }
-    window.history.pushState({}, "", url);
+    if ( url.searchParams.get("poke") !== previousSearchParams ) {
+      window.history.pushState({}, "", url);
+    }
   }, 500);
 
   $: updateUrl(query);
