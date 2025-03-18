@@ -2,8 +2,11 @@
 
 This is a repository holder for the 151 Pokemon Cards CSS Holographic effect.  
 
-🔥 As seen on [css-tricks.com](https://css-tricks.com/holographic-trading-card-effect/) and [codepen](https://codepen.io/simeydotme/pen/abYWJdX)  
-🌟 Demo running @ https://poke-151.simey.me/
+| <img src="https://github.com/user-attachments/assets/ca493541-57bb-48c3-b40c-925f7203a933" width=80> | As seen on [css-tricks.com](https://css-tricks.com/holographic-trading-card-effect/) and [codepen](https://codepen.io/simeydotme/pen/abYWJdX) 
+| --: | :-- |
+| [<img src="https://github.com/user-attachments/assets/f1c9d376-0948-4b96-826e-f016e6584736" width=80><img src="https://github.com/user-attachments/assets/8137f0c8-6bc2-4f22-90c9-03cb8332b6f1" width=25>](https://poke-151.simey.me/) | Demo @ https://poke-151.simey.me/ ⭐ |
+| [<img src="https://github.com/user-attachments/assets/fd862cc7-2f30-4a35-9dbc-778edcc369f3" width=80>](https://poke-holo.simey.me/) | SwSH version @ https://poke-holo.simey.me/   |
+
 
 ### A collection of advanced CSS styles, applied with SvelteJS.
 Uses CSS Transforms, Gradients, Blend-modes and Filters to simulate the various Holofoil effects found
