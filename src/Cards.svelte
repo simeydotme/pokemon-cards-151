@@ -106,8 +106,4 @@
       transform: translate3d(0, 0, 0.1px) rotateZ(5deg);
     }
   }
-
-  :global(.card-grid > .card-slot:has(.card.is-scaled)) {
-    transform: translate3d(0, 0, 0.1px) !important;
-  }
 </style>
