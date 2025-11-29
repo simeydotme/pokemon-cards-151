@@ -8,6 +8,16 @@ This is a repository holder for the 151 Pokemon Cards CSS Holographic effect.
 | [<img src="https://github.com/user-attachments/assets/fd862cc7-2f30-4a35-9dbc-778edcc369f3" width=80>](https://poke-holo.simey.me/) | SwSH version @ https://poke-holo.simey.me/   |
 
 
+<br><br>
+
+-----
+
+> [!TIP]
+> I've published a component which can help with getting you a similar effect to this, without much effort;  
+> https://github.com/simeydotme/hover-tilt 
+
+---
+
 ### A collection of advanced CSS styles, applied with SvelteJS.
 Uses CSS Transforms, Gradients, Blend-modes and Filters to simulate the various Holofoil effects found
 in the 151 (Scarlet & Violet) era of Pokemon Trading Cards.
