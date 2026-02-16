@@ -204,7 +204,7 @@
 
     <section class="intro" id="⚓-intro">
       <p>
-        A re-build of my <a href="https://poke-151.simey.me"
+        A re-build of my <a href="https://poke-holo.simey.me/"
           >Pokemon Realistic Cards project</a
         >, but for the legendary Pokemon 151 set (sv3.6);
       </p>
